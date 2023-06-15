@@ -1,0 +1,127 @@
+<form id="form" class="mb-5 pt-md-4" novalidate [formGroup]="checkoutForm">
+  <div class="container-xxl col-lg-5">
+    <h3 class="docs mb-md-5 text-center">Сделать заказ</h3>
+    <div class="row mt-3 mb-3">
+
+      <div class="col-sm-4">
+        <label for="name" class="form-label">Имя</label>
+        <input type="text" id="name"
+               formControlName="name"
+               class="form-control" required>
+        <div class="w-100" *ngIf="checkoutForm.get('name')?.invalid
+                     && (checkoutForm.get('name')?.touched || checkoutForm.get('name')?.dirty)">
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('name')?.errors?.['required']">
+            Your name is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('name')?.errors?.['pattern']">
+            Name must contain only letters.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <label for="surname" class="form-label">Фамилия</label>
+        <input type="text" id="surname"
+               formControlName="last_name"
+               class="form-control" required>
+        <div class="w-100" *ngIf="checkoutForm.get('last_name')?.invalid
+                     && (checkoutForm.get('last_name')?.touched || checkoutForm.get('last_name')?.dirty)">
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('last_name')?.errors?.['required']">
+            Your surname is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('last_name')?.errors?.['pattern']">
+            Surname must contain only letters.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <label for="phone" class="form-label">Телефон</label>
+        <input type="text" id="phone"
+               formControlName="phone"
+               class="form-control" required>
+        <div class="w-100" *ngIf="checkoutForm.get('phone')?.invalid
+                     && (checkoutForm.get('phone')?.touched || checkoutForm.get('phone')?.dirty)">
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('phone')?.errors?.['required']">
+            Your phone is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('phone')?.errors?.['pattern']">
+            Phone must contain + symbol and 11 numbers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+
+      <div class="col-sm-6">
+        <label for="country" class="form-label">Страна</label>
+        <input type="text" id="country"
+               formControlName="country"
+               class="form-control" required>
+        <div class="invalid-feedback" *ngIf="checkoutForm.get('country')?.invalid
+              && (checkoutForm.get('country')?.touched || checkoutForm.get('country')?.dirty)
+              && checkoutForm.get('country')?.errors?.['required']">
+          Valid country is required.
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="index" class="form-label">Индекс</label>
+        <input type="number" id="index"
+               formControlName="zip"
+               class="form-control" required>
+        <div class="invalid-feedback" *ngIf="checkoutForm.get('zip')?.invalid
+              && (checkoutForm.get('zip')?.touched || checkoutForm.get('zip')?.dirty)
+              && checkoutForm.get('zip')?.errors?.['required']">
+          Valid index is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-sm-12">
+        <label for="address" class="form-label">Адрес</label>
+        <input type="text" id="address"
+               formControlName="address"
+               class="form-control">
+        <div class="w-100" *ngIf="checkoutForm.get('address')?.invalid
+                     && (checkoutForm.get('address')?.touched || checkoutForm.get('address')?.dirty)">
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('address')?.errors?.['required']">
+            Your phone is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="checkoutForm.get('address')?.errors?.['pattern']">
+            Phone must contain + symbol and 11 numbers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-sm-12">
+        <label for="product" class="form-label">Товар</label>
+        <input type="text" id="product" class="form-control"
+               [(ngModel)]="formValues.product"
+               formControlName="product">
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-sm-12">
+        <label for="comment" class="form-label">Комментарий</label>
+        <input type="text" id="comment"
+               formControlName="comment"
+               class="form-control">
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn px-5 btn-primary hvr-radial-out" (click)="createOrder()" [disabled]="checkoutForm.invalid || checkoutForm.disabled">Отправить</button>
+      <div class="invalid-feedback" *ngIf="failText">Произошла ошибка. Попробуйте еще раз.</div>
+    </div>
+  </div>
+</form>
+
+
+

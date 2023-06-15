@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.btn {
+  --bs-btn-padding-x: 1.5rem;
+  --bs-btn-padding-y: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn2 {
+  border: 1px solid #0d6efd;
+}
+
+#thanks {
+  display: none;
+}
+
+.white-popup {
+  display: block;
+  position: fixed;
+  top: calc(50% - 220px/2);
+  left: calc(50% - 600px/2);;
+  background: white;
+  padding: 20px;
+  width: 600px;
+  height: 220px;
+  max-width: 500px;
+  margin: 20px auto;
+  border: 1px solid #43a9c4;
+  text-align: center;
+  font-weight: bold;
+  z-index: 5;
+}
+
+.popup-bg {
+  display: none;
+  //opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  top: 0;
+  background: #000000c9;
+  z-index: 4;
+  //transition: 0.3s;
+}
+
+.popup-text {
+  margin-bottom: 30px;
+}
+
+.popup-link {
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid #43a9c4;
+  color: black;
+}
+
+input.ng-invalid.ng-dirty,
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

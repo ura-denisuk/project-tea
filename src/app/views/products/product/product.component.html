@@ -1,0 +1,17 @@
+<div class="d-flex align-items-center justify-content-center">
+  <div class="col-4">
+    <div class="card w-100 h-100" style="width: 18rem;">
+      <a class="product-image">
+        <img src="{{product.image}}" class="card-img-top" alt="image-1">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <div class="fw-bold mb-2">{{product.price | currency:'RUB '}}</div>
+        <p class="card-text">{{product.description | description}}</p>
+      </div>
+      <div class="card-footer bg-transparent border-0 pb-3">
+        <a class="btn px-5 btn-primary hvr-back-pulse" [routerLink]="['/order']" [queryParams]="{product: product.title}">Купить</a>
+      </div>
+    </div>
+  </div>
+</div>
