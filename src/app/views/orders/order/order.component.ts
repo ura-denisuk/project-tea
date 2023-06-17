@@ -1,7 +1,7 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, Validators} from "@angular/forms";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderType} from "../../../../types/order";
 import {ProductService} from "../../../shared/services/product.service";
 
@@ -10,7 +10,7 @@ import {ProductService} from "../../../shared/services/product.service";
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
-export class OrderComponent implements OnDestroy{
+export class OrderComponent implements OnInit, OnDestroy{
 
   public formValues: OrderType = {
     name: '',
@@ -29,7 +29,7 @@ export class OrderComponent implements OnDestroy{
 
 
   //Валидация формы
-  checkoutForm = this.fb.group({
+  checkoutForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.pattern('^[a-zA-Zа-яА-Я]+$')]],
     last_name: ['', [Validators.required, Validators.pattern('^[a-zA-Zа-яА-Я]+$')]],
     phone: ['', [Validators.required, Validators.pattern('^\\+?\\d{11}$')]],
@@ -53,9 +53,9 @@ export class OrderComponent implements OnDestroy{
 
 
   ngOnInit() {
-    this.subscription = this.activatedRoute.queryParams.subscribe((params) => {
+    this.subscription = this.activatedRoute.queryParams.subscribe((params: Params) => {
       if (params['product']) {
-        this.formValues.product = params['product'];
+        this.checkoutForm.get('product')?.setValue(params['product']);
         console.log(params['product']);
       }
     })
@@ -72,5 +72,4 @@ export class OrderComponent implements OnDestroy{
         }
       })
   }
-
 }

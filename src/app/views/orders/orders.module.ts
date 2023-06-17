@@ -5,7 +5,7 @@ import {OrderComponent} from "./order/order.component";
 import {SuccessOrderComponent} from "./success-order/success-order.component";
 import {SharedModule} from "../../shared/shared.module";
 import {RouterModule} from "@angular/router";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
@@ -18,7 +18,6 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     CommonModule,
     SharedModule,
     NgbModule,
-    FormsModule,
     ReactiveFormsModule,
     RouterModule,
     OrdersRoutingModule
